@@ -18,7 +18,7 @@ export default function MainBanner() {
                     height={150}
                 />
             </div>
-            <div className='flex-1/2  p-12.5 bg-card-bg grow-0'>
+            <div className='flex-1/2  p-12.5 bg-card-bg grow-0 rounded-tl-2xl rounded-bl-2xl'>
                 <div className='w-fit py-2.5 px-5 rounded-3xl flex items-center gap-3 bg-white'>
                     <Image src={HotReceip} alt='Іконка з зображенням рецепта' />
                     <p className='text-sm font-semibold'>Гарячі рецепти</p>
@@ -33,7 +33,7 @@ export default function MainBanner() {
                         magna aliqut enim ad minim
                     </p>
                 </div>
-                <div className='mt-12.5 flex items-center gap-4'>
+                <div className='mt-12.5 flex items-center gap-4 '>
                     <div className='px-5 py-3 flex items-center gap-3 rounded-3xl bg-black/10'>
                         <Image src={Timer} alt='Іконка з зображенням таймеру' />
                         30 Хвилин
@@ -79,12 +79,13 @@ export default function MainBanner() {
                     </div>
                 </div>
             </div>
-            <div className='w-1/2 shrink-0 relative'>
+            <div className='w-1/2 shrink-0 relative rounded-tr-2xl rounded-br-2xl'>
                 <Image
                     fill
                     style={{ objectFit: 'cover' }}
                     src='/main-banner.png'
                     alt='Зображення з тарілкою зі смаженими курячами крильцями та соусом'
+                    className='rounded-tr-2xl rounded-br-2xl'
                 />
             </div>
         </section>
