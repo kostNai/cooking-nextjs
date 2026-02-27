@@ -1,3 +1,9 @@
+import MainBanner from '@/components/layout/mainBanner'
+
 export default function Home() {
-    return <div>Hello</div>
+    return (
+        <div>
+            <MainBanner />
+        </div>
+    )
 }
