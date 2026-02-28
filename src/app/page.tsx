@@ -9,11 +9,11 @@ export default function Home() {
     return (
         <div>
             <MainBanner />
-            <CategoriesList />
+            {/* <CategoriesList />
             <SimpleReceips />
             <ChefBanner />
             <TryReceipSection />
-            <SubscribeSection />
+            <SubscribeSection /> */}
         </div>
     )
 }
