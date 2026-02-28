@@ -80,7 +80,7 @@ export default function TryReceipSection() {
                     enim ad minim
                 </p>
             </div>
-            <div className='mt-20 flex flex-wrap justify-between gap-10 *:w-72.5'>
+            <div className='mt-20 flex flex-wrap justify-between gap-10 *:w-72.5 [&_h3]:text-lg'>
                 {data.map((receip) => (
                     <ReceipCard
                         key={receip.title}
