@@ -2,6 +2,7 @@ import Image, { StaticImageData } from 'next/image'
 import Fork from '@/../public/icons/fork.svg'
 import Knife from '@/../public/icons/knife.svg'
 import Timer from '@/../public/icons/timer.svg'
+import { GoHeartFill } from 'react-icons/go'
 
 type Props = {
     img: StaticImageData
@@ -19,8 +20,15 @@ export default function ReceipCard({
     category,
 }: Props) {
     return (
-        <article className='px-4 pt-4 pb-8 bg-linear-to-b from-transparent to-card-bg w-100 rounded-4xl'>
+        <article className='relative px-4 pt-4 pb-8 bg-linear-to-b from-transparent to-card-bg w-100 rounded-4xl'>
             <div className='rounded-2xl'>
+                <div className='absolute top-10 right-10 rounded-full p-4 flex items-center justify-center bg-white'>
+                    <GoHeartFill
+                        size={20}
+                        color={isFavorite ? '#FF6363' : '#DBE2E5'}
+                        className='cursor-pointer transition-transform duration-300 hover:scale-120'
+                    />
+                </div>
                 <Image
                     src={img}
                     alt={`Картинка з зображенням готової страви ${title}`}
