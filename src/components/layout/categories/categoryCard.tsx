@@ -9,7 +9,7 @@ type Props = {
 export default function CategoryCard({ img, title, bgColor }: Props) {
     return (
         <article
-            className='px-10 pb-7.5 rounded-4xl flex-1 w-45 max-w-45 min-w-45 shrink-0 max-xl-w-[300px] max-xl:max-w-75 max-xl:min-w-62.5 max-sm:flex-1 max-sm:max-w-full'
+            className='px-10 pb-7.5 rounded-4xl flex-1 w-45 max-w-45 min-w-45 shrink-0 max-xl-w-[300px] max-xl:max-w-75 max-xl:min-w-62.5 max-sm:flex-1 max-sm:max-w-full max-sm:rounded-none'
             style={{
                 backgroundImage: `linear-gradient(to bottom, transparent, ${bgColor})`,
             }}

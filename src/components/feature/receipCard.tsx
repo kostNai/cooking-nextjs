@@ -20,7 +20,7 @@ export default function ReceipCard({
     category,
 }: Props) {
     return (
-        <article className='relative px-4 pt-4 pb-8 bg-linear-to-b from-transparent to-card-bg w-100 rounded-4xl'>
+        <article className='relative px-4 pt-4 pb-8 bg-linear-to-b from-transparent to-card-bg w-100 rounded-4xl max-2xl:w-[48%] max-md:w-full max-sm:rounded-none'>
             <div className='rounded-2xl'>
                 <div className='absolute top-10 right-10 rounded-full p-4 flex items-center justify-center bg-white'>
                     <GoHeartFill
@@ -33,7 +33,7 @@ export default function ReceipCard({
                     src={img}
                     alt={`Картинка з зображенням готової страви ${title}`}
                     height={250}
-                    className='rounded-2xl'
+                    className='rounded-2xl w-full'
                 />
             </div>
             <div className='my-6'>

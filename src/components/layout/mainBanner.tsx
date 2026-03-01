@@ -18,7 +18,7 @@ export default function MainBanner() {
                     height={150}
                 />
             </div>
-            <div className='flex-1/2  p-12.5 bg-card-bg grow-0 rounded-tl-2xl rounded-bl-2xl max-xl:rounded-tr-2xl max-xl:rounded-bl-none max-sm:px-2 max-sm:py-8'>
+            <div className='flex-1/2  p-12.5 bg-card-bg grow-0 rounded-tl-2xl rounded-bl-2xl max-xl:rounded-tr-2xl max-xl:rounded-bl-none max-sm:px-2 max-sm:py-8 max-sm:rounded-none'>
                 <div className='w-fit py-2.5 px-5 rounded-3xl flex items-center gap-3 bg-white max-sm:justify-center max-sm:w-full'>
                     <Image src={HotReceip} alt='Іконка з зображенням рецепта' />
                     <p className='text-sm font-semibold'>Гарячі рецепти</p>
@@ -85,13 +85,13 @@ export default function MainBanner() {
                     </div>
                 </div>
             </div>
-            <div className='w-1/2 relative rounded-tr-2xl rounded-br-2xl max-xl:h-60 max-xl:w-full max-xl:rounded-tr-none max-xl:rounded-b-2xl'>
+            <div className='w-1/2 relative rounded-tr-2xl rounded-br-2xl max-xl:h-60 max-xl:w-full max-xl:rounded-tr-none max-xl:rounded-b-2xl max-sm:rounded-none'>
                 <Image
                     fill
                     style={{ objectFit: 'cover' }}
                     src='/main-banner.png'
                     alt='Зображення з тарілкою зі смаженими курячами крильцями та соусом'
-                    className='rounded-tr-2xl rounded-br-2xl max-xl:rounded-tr-none max-xl:rounded-b-2xl'
+                    className='rounded-tr-2xl rounded-br-2xl max-xl:rounded-tr-none max-xl:rounded-b-2xl max-sm:rounded-none'
                 />
             </div>
         </section>

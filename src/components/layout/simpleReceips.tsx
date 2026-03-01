@@ -76,18 +76,18 @@ const data = [
 
 export default function SimpleReceips() {
     return (
-        <section className='pt-46'>
+        <section className='pt-46 max-lg:pt-12'>
             <div className='flex flex-col items-center gap-6'>
-                <h2 className='text-5xl font-semibold'>
+                <h2 className='text-5xl font-semibold max-md:text-center'>
                     Прості та смачні рецепти
                 </h2>
-                <p className='text-center text-black/60 mx-92.5'>
+                <p className='text-center text-black/60 mx-92.5 max-xl:mx-0'>
                     Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqut
                     enim ad minim
                 </p>
             </div>
-            <div className='flex flex-wrap justify-between gap-10 mt-24'>
+            <div className='flex flex-wrap justify-between gap-10 mt-24 max-2xl:gap-2 max-lg:mt-8'>
                 {data.map((receip, indx) => (
                     <ReceipCard
                         key={indx}

@@ -10,8 +10,8 @@ export default function Home() {
         <div>
             <MainBanner />
             <CategoriesList />
-            {/* <SimpleReceips />
-            <ChefBanner />
+            <SimpleReceips />
+            {/* <ChefBanner />
             <TryReceipSection />
             <SubscribeSection />  */}
         </div>

@@ -43,7 +43,7 @@ export default function CategoriesList() {
                 </h2>
                 <Link
                     href='/'
-                    className='font-semibold px-7 py-5 bg-card-bg rounded-2xl capitalize max-sm:text-center'
+                    className='font-semibold px-7 py-5 bg-card-bg rounded-2xl capitalize max-sm:text-center max-sm:rounded-none'
                 >
                     Усі категорії
                 </Link>

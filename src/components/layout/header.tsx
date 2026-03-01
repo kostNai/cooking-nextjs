@@ -43,7 +43,7 @@ export default function Header() {
                     <Link href='/'>Про нас</Link>
                 </nav>
             </div>
-            <div className='flex gap-10 items-center *:hover:transition-transform *:duration-300 *:hover:scale-120 max-lg:gap-4 max-md:gap-2 max-sm:gap-6'>
+            <div className='flex gap-10 items-center *:hover:transition-transform *:duration-300 *:hover:scale-120 max-lg:gap-4 max-md:gap-2 max-sm:gap-2'>
                 <Link href='/'>
                     <FaFacebookF size={22} />
                 </Link>
