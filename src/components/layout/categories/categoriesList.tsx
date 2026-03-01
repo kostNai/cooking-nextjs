@@ -37,16 +37,18 @@ const categories = [
 export default function CategoriesList() {
     return (
         <section className='pt-40'>
-            <div className='flex justify-between'>
-                <h2 className='text-5xl font-semibold'>Категорії</h2>
+            <div className='flex justify-between max-sm:flex-col gap-4'>
+                <h2 className='text-5xl font-semibold max-sm:text-center'>
+                    Категорії
+                </h2>
                 <Link
                     href='/'
-                    className='font-semibold px-7 py-5 bg-card-bg rounded-2xl capitalize'
+                    className='font-semibold px-7 py-5 bg-card-bg rounded-2xl capitalize max-sm:text-center'
                 >
                     Усі категорії
                 </Link>
             </div>
-            <div className='mt-20 flex justify-between'>
+            <div className='mt-20 flex justify-between gap-10 gap-y-20 flex-wrap'>
                 {categories.map((category) => (
                     <CategoryCard
                         key={category.title}
