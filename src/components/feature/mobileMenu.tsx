@@ -14,7 +14,7 @@ type Props = {
 export default function MobileMenu({ setIsMobileMenuOpen, className }: Props) {
     return (
         <div
-            className={`absolute right-2 top-8 px-8 py-4 flex flex-col gap-4 bg-gray-500 text-white rounded-lg transition-transform duratio *:flex *:gap-2 *:items-center ${
+            className={`absolute right-2 top-8 px-8 py-4 z-10 flex flex-col gap-4 bg-gray-500 text-white rounded-lg transition-transform duratio *:flex *:gap-2 *:items-center ${
                 className || ''
             }`}
         >

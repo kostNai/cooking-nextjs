@@ -69,18 +69,18 @@ const data = [
 
 export default function TryReceipSection() {
     return (
-        <section className='py-40'>
-            <div className='flex gap-37.5 items-center'>
-                <h2 className='text-5xl font-semibold w-200 leading-15'>
+        <section className='py-40 max-sm:py-4'>
+            <div className='flex gap-37.5 items-center max-2xl:flex-col max-2xl:gap-10'>
+                <h2 className='text-5xl font-semibold w-200 leading-15 max-2xl:w-full max-2xl:text-center'>
                     Спробуйте цей смачний рецепт, щоб зробити свій день кращим.
                 </h2>
-                <p className='text-black/40'>
+                <p className='text-black/40 max-2xl:text-center'>
                     Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqut
                     enim ad minim
                 </p>
             </div>
-            <div className='mt-20 flex flex-wrap justify-between gap-10 *:w-72.5 [&_h3]:text-lg'>
+            <div className='mt-20 flex flex-wrap justify-between gap-10 *:w-72.5 [&_h3]:text-lg max-xl:gap-2 max-lg:mt-10'>
                 {data.map((receip) => (
                     <ReceipCard
                         key={receip.title}

@@ -11,9 +11,9 @@ export default function Home() {
             <MainBanner />
             <CategoriesList />
             <SimpleReceips />
-            {/* <ChefBanner />
+            <ChefBanner />
             <TryReceipSection />
-            <SubscribeSection />  */}
+            <SubscribeSection />
         </div>
     )
 }
