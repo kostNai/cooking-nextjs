@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import SubscribeSection from '@/components/layout/subscribeSection'
 
 const inter = Inter({
     variable: '--font-geist-sans',
@@ -28,6 +29,9 @@ export default function RootLayout({
                 <main className='flex-1 px-20 max-lg:px-5 max-sm:px-0'>
                     {children}
                 </main>
+                <div className='px-20 max-lg:px-5'>
+                    <SubscribeSection />
+                </div>
                 <Footer />
             </body>
         </html>

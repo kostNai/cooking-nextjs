@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function SubscribeSection() {
     return (
-        <section className='py-20 relative flex justify-center bg-card-bg rounded-[60px] max-sm:rounded-none max-md:py-8'>
+        <section className=' py-20 relative flex justify-center bg-card-bg rounded-[60px] max-sm:rounded-none max-md:py-8'>
             <div>
                 <div className='w-155 max-md:w-full max-md:px-4'>
                     <h2 className='text-5xl font-semibold text-center'>
