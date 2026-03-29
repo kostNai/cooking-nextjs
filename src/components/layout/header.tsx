@@ -7,13 +7,20 @@ import { FaFacebookF } from 'react-icons/fa'
 import { FaTwitter } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { FaUser } from 'react-icons/fa'
 
 import Logo from '@/../public/logo.svg'
 import { useState } from 'react'
 import MobileMenu from '../feature/mobileMenu'
+import { useAccessToken, useUserStore } from '@/lib/store/store'
 
 export default function Header() {
     const [isMobieleMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
+
+    const user = useUserStore((s) => s.user)
+    const token = useAccessToken((s) => s.token)
+
+    console.log(token)
 
     return (
         <header className='relative px-20 py-11 flex justify-between items-center border-b border-b-black/20 border-b-solid max-md:px-5 '>
@@ -43,6 +50,16 @@ export default function Header() {
                     <Link href='/'>Про нас</Link>
                 </nav>
             </div>
+            {user ? (
+                <Link href='/profile'>{user.name}</Link>
+            ) : (
+                <Link
+                    href='/login'
+                    className='transition-transform duration-300 hover:scale-125'
+                >
+                    <FaUser size={24} />
+                </Link>
+            )}
             <div className='flex gap-10 items-center *:hover:transition-transform *:duration-300 *:hover:scale-120 max-lg:gap-4 max-md:gap-2 max-sm:gap-4'>
                 <Link href='/'>
                     <FaFacebookF size={22} />

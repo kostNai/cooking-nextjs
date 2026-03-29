@@ -4,6 +4,8 @@ import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import SubscribeSection from '@/components/layout/subscribeSection'
+import { ToastContainer } from 'react-toastify'
+import { InitAuth } from '@/components/init-auth'
 
 const inter = Inter({
     variable: '--font-geist-sans',
@@ -25,8 +27,10 @@ export default function RootLayout({
             <body
                 className={`${inter.className} antialiased h-screen flex  flex-col`}
             >
+                <ToastContainer />
                 <Header />
-                <main className='flex-1 px-20 max-lg:px-5 max-sm:px-0'>
+                <InitAuth />
+                <main className='flex-1 px-20 max-lg:px-5 max-sm:px-0 relative'>
                     {children}
                 </main>
                 <div className='px-20 max-lg:px-5'>
