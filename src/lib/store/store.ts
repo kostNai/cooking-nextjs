@@ -6,11 +6,7 @@ type AccessTokenStore = {
     setToken: (token: string) => void
     removeToken: () => void
 }
-type UserStore = {
-    user: UserType | null
-    setUser: (user: UserType) => void
-    clearUser: () => void
-}
+
 type AuthStore = {
     user: UserType | null
     setUser: (user: UserType) => void

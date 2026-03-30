@@ -1,7 +1,5 @@
 'use server'
 
-import { useAccessToken } from '@/lib/store/store'
-
 export async function register(
     initialState: { status: boolean; message: string[] | string },
     formData: FormData
@@ -28,34 +26,34 @@ export async function register(
     return { status: true, message: 'Зареєстровано успішно' }
 }
 
-export async function login(
-    initialState: {
-        status: boolean
-        message: string[] | string
-        accessToken: string
-    },
-    formData: FormData
-) {
-    const { email, password } = Object.fromEntries(formData)
+// export async function login(
+//     initialState: {
+//         status: boolean
+//         message: string[] | string
+//         accessToken: string
+//     },
+//     formData: FormData
+// ) {
+//     const { email, password } = Object.fromEntries(formData)
 
-    const res = await fetch('http://localhost:3001/auth/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    const json = await res.json()
+//     const res = await fetch('http://localhost:3001/auth/login', {
+//         method: 'POST',
+//         body: JSON.stringify({ email, password }),
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     })
+//     const json = await res.json()
 
-    if (res.status !== 200) {
-        return { status: false, message: json.message, accessToken: '' }
-    }
-    return {
-        status: true,
-        message: '',
-        accessToken: json.access_token,
-    }
-}
+//     if (res.status !== 200) {
+//         return { status: false, message: json.message, accessToken: '' }
+//     }
+//     return {
+//         status: true,
+//         message: '',
+//         accessToken: json.access_token,
+//     }
+// }
 
 // export async function refreshAccessToken() {
 //     console.log('refresh')

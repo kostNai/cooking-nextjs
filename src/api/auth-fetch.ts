@@ -1,12 +1,13 @@
 'use client'
 import { useAccessToken } from '@/lib/store/store'
-import { refreshAccessToken } from './refreshAccessToken'
+import { refreshAccessToken } from './refresh-access-token'
 
 export async function authFetch(url: string, options: RequestInit = {}) {
     let token = useAccessToken.getState().token
 
     if (!token) {
-        token = await refreshAccessToken()
+        const res = await refreshAccessToken()
+        if (res !== null) token = res
     }
 
     const headers = {

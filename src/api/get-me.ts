@@ -5,5 +5,11 @@ export const getMe = async () => {
     if (!res.ok) return null
 
     const data = await res.json()
-    return { ...data }
+
+    return {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        image: data.image ?? null,
+    }
 }

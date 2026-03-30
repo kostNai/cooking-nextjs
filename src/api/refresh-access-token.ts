@@ -6,7 +6,7 @@ export async function refreshAccessToken(): Promise<string | null> {
     try {
         const res = await fetch('http://localhost:3001/auth/refresh', {
             method: 'POST',
-            credentials: 'include', // refreshToken в httpOnly куках
+            credentials: 'include',
         })
 
         if (!res.ok) {

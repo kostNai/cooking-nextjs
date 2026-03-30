@@ -15,6 +15,8 @@ export async function login(
     const data = await res.json()
 
     if (!res.ok) throw new Error(data.message || 'Login failed')
-
-    return data
+    return {
+        access_token: data.access_token,
+        message: data.message ?? null,
+    }
 }
