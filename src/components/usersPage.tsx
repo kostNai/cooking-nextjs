@@ -18,7 +18,7 @@ export default function UsersPage({ users }: Props) {
         <div className='relative p-10'>
             <Button
                 onClick={() => setIsAddUser(true)}
-                type={'button'}
+                type='button'
                 disabled={false}
             >
                 Додати нового

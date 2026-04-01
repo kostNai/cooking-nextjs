@@ -78,13 +78,12 @@ export default function AddUserModal({ open, onClose }: Props) {
                     name='confirmPassword'
                 />
 
-                <div className='flex justify-end gap-2 mt-4'>
-                    <Button type='button' onClick={onClose} disabled={pending}>
-                        Скасувати
-                    </Button>
-
+                <div className='flex  gap-2 mt-4'>
                     <Button type='submit' disabled={false}>
                         Зберегти
+                    </Button>
+                    <Button type='button' onClick={onClose} disabled={pending}>
+                        Скасувати
                     </Button>
                 </div>
             </form>
