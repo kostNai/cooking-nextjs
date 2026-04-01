@@ -2,8 +2,8 @@
 'use client'
 import { useEffect } from 'react'
 import { useAccessToken, useUserStore } from '@/lib/store/store'
-import { getMe } from '@/api/get-me'
-import { authFetch } from '@/api/auth-fetch'
+import { getMe } from '@/api/(auth)/get-me'
+import { authFetch } from '@/api/(auth)/auth-fetch'
 
 export const InitAuth = () => {
     const setToken = useAccessToken((s) => s.setToken)

@@ -6,6 +6,7 @@ export type UserType = {
     name: string
     email: string
     password?: string
+    image?: string
     createdAt?: string
     posts?: PostType[]
     recipes?: RecipeType[]

@@ -6,9 +6,9 @@ import { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { toast } from 'react-toastify'
 import { VscEye, VscEyeClosed } from 'react-icons/vsc'
 
-import { getMe } from '@/api/get-me'
+import { getMe } from '@/api/(auth)/get-me'
 import Input from '@/components/UI/input'
-import { login as apiLogin } from '@/api/login'
+import { login as apiLogin } from '@/api/(auth)/login'
 import { LoginType } from '@/lib/types/login-type'
 import { useAccessToken, useUserStore } from '@/lib/store/store'
 
