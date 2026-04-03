@@ -33,8 +33,8 @@ export default function Avatar({ image, setIsFileChange }: Props) {
         <div className='relative w-fit h-fit'>
             <div
                 className={`${
-                    image ? '' : 'p-4'
-                }  rounded-full flex justify-center items-center border border-solid border-black/20 overflow-hidden`}
+                    image ? '' : 'p-4  border border-solid border-black/20'
+                }  rounded-full flex justify-center items-center overflow-hidden`}
             >
                 {preview ? (
                     <Image

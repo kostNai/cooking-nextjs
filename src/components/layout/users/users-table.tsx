@@ -1,17 +1,18 @@
 'use client'
 
-import { deleteUser } from '@/api/(users)/delete-user'
-import { UserType } from '@/lib/types/user-type'
 import { useRouter } from 'next/navigation'
 import { MouseEvent, useEffect, useState } from 'react'
 
-import { MdDelete } from 'react-icons/md'
 import { toast } from 'react-toastify'
-import { formatIsoToCustom } from '@/lib/helpers/format-iso-to-custom'
-import Loading from '@/components/feature/loading'
+import { MdDelete } from 'react-icons/md'
+
 import Modal from '@/components/UI/modal'
 import Button from '@/components/UI/button'
 import Tooltip from '@/components/UI/tooltip'
+import { UserType } from '@/lib/types/user-type'
+import Loading from '@/components/feature/loading'
+import { deleteUser } from '@/api/(users)/delete-user'
+import { formatIsoToCustom } from '@/lib/helpers/format-iso-to-custom'
 
 type Props = {
     users: UserType[]
@@ -60,6 +61,7 @@ export default function UsersTable({ users }: Props) {
                             Ім&apos;я
                         </th>
                         <th scope='col'>Email</th>
+                        <th scope='col'>Роль</th>
                         <th scope='col'>Додано</th>
                         <th scope='col'></th>
                     </tr>
@@ -69,9 +71,7 @@ export default function UsersTable({ users }: Props) {
                         <tr
                             key={u.id}
                             className='even:bg-black/10 transition-colors duration-300 hover:bg-black/50 cursor-pointer *:text-start *:p-4 '
-                            onClick={() =>
-                                router.push(`/profile/users/${u.id}`)
-                            }
+                            onClick={() => router.push(`/admin/users/${u.id}`)}
                         >
                             <td>
                                 <Tooltip text={u.id!}>{u.id}</Tooltip>
@@ -81,6 +81,9 @@ export default function UsersTable({ users }: Props) {
                             </td>
                             <td>
                                 <Tooltip text={u.email}>{u.email}</Tooltip>
+                            </td>
+                            <td>
+                                <Tooltip text={u.email}>{u.role}</Tooltip>
                             </td>
                             <td>
                                 <Tooltip text={formatIsoToCustom(u.createdAt!)}>

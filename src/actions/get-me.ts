@@ -1,3 +1,5 @@
+'use server'
+
 import { authFetch } from './auth-fetch'
 
 export const getMe = async () => {

@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react'
 
 type Props = {
-    value: string
-    onChange: (e: ChangeEvent<HTMLInputElement, HTMLInputElement>) => void
     type: string
-    placeholder: string
     name: string
+    value?: string
+    onChange?: (e: ChangeEvent<HTMLInputElement, HTMLInputElement>) => void
+    placeholder?: string
+    defaultValue?: string
 }
 
 export default function Input({
@@ -14,6 +15,7 @@ export default function Input({
     type,
     placeholder,
     name,
+    defaultValue,
 }: Props) {
     return (
         <input
@@ -23,6 +25,7 @@ export default function Input({
             name={name}
             value={value}
             onChange={onChange}
+            defaultValue={defaultValue}
         />
     )
 }

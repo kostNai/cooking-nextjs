@@ -52,7 +52,9 @@ export default function Header() {
             {!initialized ? (
                 <Loading size={24} />
             ) : user ? (
-                <Link href='/profile'>{user.name}</Link>
+                <Link href={user.role === 'USER' ? '/profile' : '/admin'}>
+                    {user.name}
+                </Link>
             ) : (
                 <Link href='/login'>
                     <FaUser size={24} />

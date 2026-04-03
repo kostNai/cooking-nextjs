@@ -1,102 +1,125 @@
 'use client'
 
-import { ChangeEvent, useActionState, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { useUserStore } from '@/lib/store/store'
+import { useRouter } from 'next/navigation'
+import { useActionState, useEffect, useState } from 'react'
+
+import Input from '@/components/UI/input'
 import { editUser } from '@/actions/user'
+import Button from '@/components/UI/button'
 import { getMe } from '@/api/(auth)/get-me'
 import Avatar from '@/components/feature/avatar'
+import { UserType } from '@/lib/types/user-type'
+import { useUserStore } from '@/lib/store/store'
 import Loading from '@/components/feature/loading'
-import Button from '@/components/UI/button'
-import Input from '@/components/UI/input'
+
+type Props = {
+    user: UserType
+}
 
 const initialState = { status: false, message: '' }
 
-export default function Profile() {
-    const user = useUserStore((s) => s.user)
+export default function Profile({ user }: Props) {
+    const [isFileChange, setIsFileChange] = useState(false)
+    const [isDirty, setIsDirty] = useState(false)
 
-    const [userInputValue, setUserInputValue] = useState({
-        name: '',
-        email: '',
-    })
-    const [isFileChange, setIsFileChange] = useState<boolean>(false)
+    const router = useRouter()
 
-    const onChangeUserInput = (e: ChangeEvent<HTMLInputElement>) => {
-        setUserInputValue((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }))
+    const initialValues = {
+        name: user?.name || '',
+        email: user?.email || '',
     }
-
-    const isUserDataChange =
-        (userInputValue.name && userInputValue.name !== user?.name) ||
-        (userInputValue.email && userInputValue.email !== user?.email) ||
-        isFileChange
 
     const formAction = async (
         state: typeof initialState,
         formData: FormData
     ) => {
-        if (!user) return Promise.resolve(initialState)
+        if (!user) return initialState
+
         const res = await editUser(user.id!, state, formData)
+
         if (res.status) {
             const updatedUser = await getMe()
             if (updatedUser) {
                 useUserStore.setState({ user: updatedUser })
                 setIsFileChange(false)
+                setIsDirty(false)
             }
         }
+
         return res
     }
-
     const [state, action, pending] = useActionState(formAction, initialState)
 
     useEffect(() => {
-        if (state.status && state.message) toast.success(state.message)
-        if (!state.status && state.message) toast.error(state.message)
+        if (state.message) {
+            if (state.status) {
+                toast.success(state.message)
+            } else {
+                toast.error(state.message)
+            }
+        }
     }, [state])
+    useEffect(() => {
+        if (user && user.role !== 'ADMIN' && user.role !== 'MODERATOR') {
+            router.push('/')
+        }
+    }, [user, router])
 
-    if (!user) return <Loading size={50} />
+    if (!user || (user.role !== 'ADMIN' && user.role !== 'MODERATOR'))
+        return <Loading size={50} />
+
+    const isUserDataChange = isDirty || isFileChange
+
+    const handleChange = (form: HTMLFormElement) => {
+        const formData = new FormData(form)
+
+        const name = (formData.get('name') as string) || ''
+        const email = (formData.get('email') as string) || ''
+
+        const isChanged =
+            name !== initialValues.name || email !== initialValues.email
+
+        setIsDirty(isChanged)
+    }
 
     return pending ? (
         <Loading size={50} />
     ) : (
         <div className='p-10'>
-            <form action={action} className=''>
-                <div>
-                    <Avatar
-                        image={user.image}
-                        setIsFileChange={setIsFileChange}
-                    />
-                </div>
+            <form
+                action={action}
+                onChange={(e) => handleChange(e.currentTarget)}
+            >
+                <Avatar image={user.image} setIsFileChange={setIsFileChange} />
+
                 <div className='pt-4'>
-                    <h3 className='text-2xl font-bold border-b border-b-solid border-b-black/20'>
+                    <h3 className='text-2xl font-bold border-b border-black/20'>
                         Персональні дані
                     </h3>
+
                     <div className='flex gap-10 pt-10'>
                         <label className='text-black/60 flex-1 flex flex-col gap-2'>
                             ІМ&apos;Я
                             <Input
-                                value={userInputValue.name || user?.name || ''}
-                                onChange={onChangeUserInput}
-                                type='text'
-                                placeholder=''
+                                defaultValue={user.name || ''}
                                 name='name'
+                                type='text'
+                                onChange={() => setIsDirty(true)}
                             />
                         </label>
+
                         <label className='text-black/60 flex-1 flex flex-col gap-2'>
                             EMAIL
                             <Input
-                                value={
-                                    userInputValue.email || user?.email || ''
-                                }
-                                onChange={onChangeUserInput}
-                                type='email'
-                                placeholder=''
+                                defaultValue={user.email || ''}
                                 name='email'
+                                type='email'
+                                onChange={() => setIsDirty(true)}
                             />
                         </label>
                     </div>
+
                     <div className='flex justify-end pt-10'>
                         {isUserDataChange && (
                             <Button type='submit' disabled={pending}>

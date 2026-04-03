@@ -1,6 +1,6 @@
 import ProfileLayoutNav from '@/components/layout/profile/profile-layout-nav'
 
-export default async function ProfileLayout({
+export default async function AdminLayout({
     children,
 }: Readonly<{
     children: React.ReactNode

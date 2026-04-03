@@ -8,25 +8,25 @@ export default function ProfileLayoutNav() {
     return (
         <nav className='bg-card-bg  flex-1/4 flex flex-col gap-10 pt-8 pb-32  rounded-xl *:py-2 *:text-center *:hover:bg-white/90 *:transition-colors *:duration-300'>
             <Link
-                href='/profile/users'
+                href='/admin/users'
                 className={pathName === '/profile/users' ? `bg-white/90` : ''}
             >
                 Користувачі
             </Link>
             <Link
-                href='/profile/recipes'
+                href='/admin/recipes'
                 className={pathName === '/profile/recipes' ? `bg-white/90` : ''}
             >
                 Рецепти
             </Link>
             <Link
-                href='/profile'
+                href='/admin'
                 className={pathName === '/profile' ? `bg-white/90` : ''}
             >
                 Персональні дані
             </Link>
             <Link
-                href='/profile/posts'
+                href='/admin/posts'
                 className={pathName === '/profile/posts' ? `bg-white/90` : ''}
             >
                 Пости
