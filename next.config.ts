@@ -14,7 +14,7 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'localhost',
-                port: '9000', // вкажи порт, якщо зображення з бекенду
+                port: '9000',
                 pathname: '/**',
             },
         ],

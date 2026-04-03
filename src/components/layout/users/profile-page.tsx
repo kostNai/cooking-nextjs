@@ -1,14 +1,14 @@
 'use client'
 
 import { ChangeEvent, useActionState, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import { useUserStore } from '@/lib/store/store'
 import { editUser } from '@/actions/user'
-import Avatar from '../feature/avatar'
-import Input from '../UI/input'
-import Loading from '../feature/loading'
 import { getMe } from '@/api/(auth)/get-me'
-import { toast } from 'react-toastify'
-import Button from '../UI/button'
+import Avatar from '@/components/feature/avatar'
+import Loading from '@/components/feature/loading'
+import Button from '@/components/UI/button'
+import Input from '@/components/UI/input'
 
 const initialState = { status: false, message: '' }
 
@@ -52,7 +52,8 @@ export default function Profile() {
     const [state, action, pending] = useActionState(formAction, initialState)
 
     useEffect(() => {
-        if (state && state.message) toast.success(state.message)
+        if (state.status && state.message) toast.success(state.message)
+        if (!state.status && state.message) toast.error(state.message)
     }, [state])
 
     if (!user) return <Loading size={50} />

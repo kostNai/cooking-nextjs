@@ -13,11 +13,13 @@ import Logo from '@/../public/logo.svg'
 import { useState } from 'react'
 import MobileMenu from '../feature/mobileMenu'
 import { useUserStore } from '@/lib/store/store'
+import Loading from '../feature/loading'
 
 export default function Header() {
     const [isMobieleMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
     const user = useUserStore((s) => s.user)
+    const initialized = useUserStore((s) => s.initialized)
 
     return (
         <header className='relative px-20 py-11 flex justify-between items-center border-b border-b-black/20 border-b-solid max-md:px-5 '>
@@ -47,13 +49,12 @@ export default function Header() {
                     <Link href='/'>Про нас</Link>
                 </nav>
             </div>
-            {user ? (
+            {!initialized ? (
+                <Loading size={24} />
+            ) : user ? (
                 <Link href='/profile'>{user.name}</Link>
             ) : (
-                <Link
-                    href='/login'
-                    className='transition-transform duration-300 hover:scale-125'
-                >
+                <Link href='/login'>
                     <FaUser size={24} />
                 </Link>
             )}

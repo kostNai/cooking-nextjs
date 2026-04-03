@@ -30,33 +30,34 @@ export default function Avatar({ image, setIsFileChange }: Props) {
     console.log(image)
 
     return (
-        <div
-            className={`${
-                image ? '' : 'p-4'
-            } relative w-fit h-fit rounded-full flex justify-center items-center border border-solid border-black/20`}
-        >
-            {preview ? (
-                <Image
-                    src={preview}
-                    alt='preview'
-                    width={100}
-                    height={100}
-                    className='object-cover'
-                    unoptimized
-                />
-            ) : image ? (
-                <Image
-                    src={image}
-                    alt='Картинка з зображенням користувача'
-                    width={100}
-                    height={100}
-                    className='object-cover'
-                    unoptimized
-                />
-            ) : (
-                <FaUser size={50} />
-            )}
-
+        <div className='relative w-fit h-fit'>
+            <div
+                className={`${
+                    image ? '' : 'p-4'
+                }  rounded-full flex justify-center items-center border border-solid border-black/20 overflow-hidden`}
+            >
+                {preview ? (
+                    <Image
+                        src={preview}
+                        alt='preview'
+                        width={100}
+                        height={100}
+                        className='object-cover'
+                        unoptimized
+                    />
+                ) : image ? (
+                    <Image
+                        src={image}
+                        alt='Картинка з зображенням користувача'
+                        width={100}
+                        height={100}
+                        className='object-cover'
+                        unoptimized
+                    />
+                ) : (
+                    <FaUser size={50} />
+                )}
+            </div>
             <input
                 type='file'
                 ref={fileInputRef}
@@ -67,7 +68,7 @@ export default function Avatar({ image, setIsFileChange }: Props) {
             />
 
             <MdAddPhotoAlternate
-                className='absolute z-10 bottom-2 -right-1 cursor-pointer transition-transform duration-300 hover:scale-115'
+                className='absolute z-100 bottom-2 -right-1 cursor-pointer transition-transform duration-300 hover:scale-115'
                 size={24}
                 color='#FF5656'
                 onClick={handleButtonClick}

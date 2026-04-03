@@ -1,11 +1,11 @@
 'use client'
 
 import { ChangeEvent, useActionState, useEffect, useState } from 'react'
-import Input from '../UI/input'
-import Modal from '../UI/modal'
-import Button from '../UI/button'
 import { addUser } from '@/actions/user'
 import { toast } from 'react-toastify'
+import Button from '@/components/UI/button'
+import Input from '@/components/UI/input'
+import Modal from '@/components/UI/modal'
 
 type Props = {
     open: boolean

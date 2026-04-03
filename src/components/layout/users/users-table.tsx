@@ -7,10 +7,11 @@ import { MouseEvent, useEffect, useState } from 'react'
 
 import { MdDelete } from 'react-icons/md'
 import { toast } from 'react-toastify'
-import Modal from '../UI/modal'
-import Button from '../UI/button'
-import Loading from '../feature/loading'
 import { formatIsoToCustom } from '@/lib/helpers/format-iso-to-custom'
+import Loading from '@/components/feature/loading'
+import Modal from '@/components/UI/modal'
+import Button from '@/components/UI/button'
+import Tooltip from '@/components/UI/tooltip'
 
 type Props = {
     users: UserType[]
@@ -50,12 +51,14 @@ export default function UsersTable({ users }: Props) {
     }, [deleteStatus])
 
     return (
-        <div className='rounded-xl overflow-hidden mt-10'>
-            <table className='border-collapse w-full'>
+        <div className='rounded-xl overflow-hidden mt-10 z-0'>
+            <table className='border-collapse w-full table-fixed'>
                 <thead className='bg-black/60 text-white'>
                     <tr className='*:text-start *:p-4'>
                         <th scope='col'>Id</th>
-                        <th scope='col'>Ім&apos;я</th>
+                        <th scope='col' className='pl-12'>
+                            Ім&apos;я
+                        </th>
                         <th scope='col'>Email</th>
                         <th scope='col'>Додано</th>
                         <th scope='col'></th>
@@ -66,15 +69,25 @@ export default function UsersTable({ users }: Props) {
                         <tr
                             key={u.id}
                             className='even:bg-black/10 transition-colors duration-300 hover:bg-black/50 cursor-pointer *:text-start *:p-4 '
-                            onClick={() => router.push(`/users/${u.id}`)}
+                            onClick={() =>
+                                router.push(`/profile/users/${u.id}`)
+                            }
                         >
-                            <td className=' line-clamp-1 overflow-hidden'>
-                                {u.id}
-                            </td>
-                            <td>{u.name}</td>
-                            <td>{u.email}</td>
-                            <td>{formatIsoToCustom(u.createdAt!)}</td>
                             <td>
+                                <Tooltip text={u.id!}>{u.id}</Tooltip>
+                            </td>
+                            <td>
+                                <Tooltip text={u.name}>{u.name}</Tooltip>
+                            </td>
+                            <td>
+                                <Tooltip text={u.email}>{u.email}</Tooltip>
+                            </td>
+                            <td>
+                                <Tooltip text={formatIsoToCustom(u.createdAt!)}>
+                                    {formatIsoToCustom(u.createdAt!)}
+                                </Tooltip>
+                            </td>
+                            <td className='flex justify-center'>
                                 <MdDelete
                                     className='transition duration-300 hover:scale-110 hover:text-red-700'
                                     onClick={(e) =>

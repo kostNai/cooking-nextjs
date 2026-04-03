@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { authFetch } from './auth-fetch'
+import { UserType } from '@/lib/types/user-type'
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -14,16 +15,17 @@ export async function editUser(
     if (!image || image.size === 0) {
         formData.delete('image')
     }
+
     const res = await authFetch(`${apiUrl}/users/${id}`, {
         method: 'PATCH',
         body: formData,
     })
     const json = await res.json()
 
-    if (!json) {
-        return { status: false, message: 'Помилка' }
+    if (json.statusCode === 500) {
+        return { status: false, message: json.message }
     }
-
+    revalidatePath(`/profile/users/${id}`)
     return { status: true, message: 'Змінено успішно' }
 }
 
@@ -56,4 +58,12 @@ export async function addUser(
     }
     revalidatePath('/profile')
     return { status: true, message: 'Додано успішно' }
+}
+
+export async function getUserById(id: string): Promise<UserType> {
+    const res = await fetch(`${apiUrl}/users/${id}`)
+
+    const json = await res.json()
+
+    return json
 }

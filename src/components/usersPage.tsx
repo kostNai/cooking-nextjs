@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import { FaUserPlus } from 'react-icons/fa'
-import UsersTable from './layout/users-table'
 import Button from './UI/button'
-import AddUserModal from './layout/addUserModal'
 import { UserType } from '@/lib/types/user-type'
+import UsersTable from './layout/users/users-table'
+import AddUserModal from './layout/users/addUserModal'
 
 type Props = {
     users: UserType[]
